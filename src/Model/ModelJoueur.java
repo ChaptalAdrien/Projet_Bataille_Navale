@@ -3,7 +3,7 @@ package Model;
 
 public abstract class ModelJoueur {
     
-    private ModelPartie Model;
+    private ModelPartie ModelPartie;
     private ModelGrille grillePerso;
     
     
