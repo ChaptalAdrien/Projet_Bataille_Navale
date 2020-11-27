@@ -4,8 +4,8 @@ package Model;
 
 public class ModelPartie {
     
-    private ModelJoueur joueur;
-    private ModelJoueur ordi;
+    private ModelJ1 joueur;
+    private ModelOrdinateur ordi;
     
     //CONSTRUCTEUR
     
