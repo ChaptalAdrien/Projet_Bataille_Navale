@@ -7,11 +7,11 @@ public class Grille {
     
     private ArrayList<Case> grille;
     
-    public ModelGrille(){
+    public Grille(){
         
         for(int i = 0; i < 15; i++){
             for(int j = 0; j < 15; j++){
-                ModelCase c = new ModelCase(i,j);        
+                Case c = new Case(i,j);        
                 
                 grille.add(c);
             }
@@ -19,7 +19,7 @@ public class Grille {
         
     }
     
-    public ArrayList<ModelCase> getGrille(){
+    public ArrayList<Case> getGrille(){
         
         return this.grille;
         
