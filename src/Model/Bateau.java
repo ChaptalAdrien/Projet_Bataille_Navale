@@ -1,9 +1,13 @@
-
 package Model;
 
-public class Bateau {
+import java.util.ArrayList;
+
+public abstract class Bateau {
     
-    Joueur Proprietaire;
+    private Joueur proprietaire;
+    private ArrayList<Case> Position;
     
+    public abstract ArrayList<Case> tirer(Case c);
     
+
 }
