@@ -24,5 +24,9 @@ public class Grille {
         return this.grille;
         
     }
+
+    void fuseeEclairante() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }
