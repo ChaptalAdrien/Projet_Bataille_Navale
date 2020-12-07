@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public abstract class Bateau {
     
-    private Joueur proprietaire;
-    private ArrayList<Case> position;
-    private boolean coule;
+    protected Joueur proprietaire;
+    protected ArrayList<Case> position;
+    protected boolean coule;
     
     //Méthode de tir du bateau pour les bateau qui ne touchent qu'une seule case
     //La méthode prend en paramétre la case visée

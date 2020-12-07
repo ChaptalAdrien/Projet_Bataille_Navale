@@ -14,9 +14,8 @@ public class ControllerMenu {
     
     public void choixMenuConsole(int c){
         if(c == 1){
-            Partie p = new Partie();
             
-            ControllerPartie cp = new ControllerPartie(p);
+            ControllerPartie cp = new ControllerPartie();
             cp.creerPartie();
         }
         else if (c == 2){

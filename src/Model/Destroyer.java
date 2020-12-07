@@ -4,10 +4,9 @@ import java.util.ArrayList;
 
 public class Destroyer extends Bateau {
     
-    private Joueur proprietaire;
-    private ArrayList<Case> position;
+
     private boolean fusee;
-    private boolean coule;
+  
     
     public Destroyer(Joueur proprietaire, ArrayList<Case> position){
         this.proprietaire = proprietaire;

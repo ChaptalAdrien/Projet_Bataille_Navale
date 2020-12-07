@@ -5,9 +5,9 @@ public class Ordinateur extends Joueur {
     
    private int difficulty;
     
-    public Ordinateur(){
+    public Ordinateur(int tailleX, int tailleY){
         
-        super();
+        super(tailleX, tailleY);
         this.difficulty = 1;
     }
     

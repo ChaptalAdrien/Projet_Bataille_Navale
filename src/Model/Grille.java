@@ -6,11 +6,16 @@ import java.util.ArrayList;
 public class Grille {
     
     private ArrayList<Case> grille;
+    private int tailleX;
+    private int tailleY;
     
-    public Grille(){
+    public Grille(int tailleX, int tailleY){
         
-        for(int i = 0; i < 15; i++){
-            for(int j = 0; j < 15; j++){
+        this.tailleX = tailleX;
+        this.tailleY = tailleY;
+        
+        for(int i = 0; i < this.tailleX; i++){
+            for(int j = 0; j < this.tailleY; j++){
                 Case c = new Case(i,j);        
                 
                 grille.add(c);
