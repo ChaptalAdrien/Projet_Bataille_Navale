@@ -7,8 +7,7 @@ import java.util.ArrayList;
 public class Croiseur extends Bateau {
     
     
-    public Croiseur(Joueur proprietaire, ArrayList<Case> position){
-        this.proprietaire = proprietaire;
+    public Croiseur(ArrayList<Case> position){
         this.position = position;
         this.coule = false;
     }

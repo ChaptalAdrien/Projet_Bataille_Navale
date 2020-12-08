@@ -9,17 +9,6 @@ public class J1 extends Joueur {
         super(tailleX, tailleY);
     }
     
-    
-    public String afficherGrilles(){
-        
-        String s = "";
-        
-        Grille grilleOrdi = this.getAdversaire().getGrille();
-        Grille grillePerso = this.grille;
-        
-        
-        
-        
-    }
+   
     
 }

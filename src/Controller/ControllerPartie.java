@@ -10,7 +10,7 @@ public class ControllerPartie {
     private VuePartie vue;
     
     public ControllerPartie(){
-        
+        this.vue = new VuePartie();
     }
     
     //TODO : Gerer les execptions pour les valeurs de la taille de la grille 

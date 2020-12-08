@@ -5,11 +5,13 @@ import java.util.ArrayList;
 
 public class Grille {
     
-    private ArrayList<Case> grille;
+    private Case[][] grille;
     private int tailleX;
     private int tailleY;
     
     public Grille(int tailleX, int tailleY){
+        
+        this.grille = new Case[tailleX][tailleY];
         
         this.tailleX = tailleX;
         this.tailleY = tailleY;
@@ -18,18 +20,32 @@ public class Grille {
             for(int j = 0; j < this.tailleY; j++){
                 Case c = new Case(i,j);        
                 
-                grille.add(c);
+                grille[i][j] = c;
             }
         }
         
     }
+
+    //GETTERS
+    public int getTailleX() {
+        return tailleX;
+    }
+
+    public int getTailleY() {
+        return tailleY;
+    }
     
-    public ArrayList<Case> getGrille(){
+    public Case[][] getGrille(){
         
         return this.grille;
         
     }
+    
+    public Case getCase(int X, int Y){
+        return grille[X][Y];
+    }
 
+    
     public void fuseeEclairante() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

@@ -28,9 +28,4 @@ public class VueMenu {
         cMenu.choixMenuConsole(c);
     }
     
-    public static void main(String args[]){
-        VueMenu test = new VueMenu();
-        
-        test.afficherMenuConsole();
-    }
 }

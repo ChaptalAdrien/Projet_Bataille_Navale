@@ -4,8 +4,8 @@ import java.util.ArrayList;
 public class Cuirasse extends Bateau {
     
     
-    public Cuirasse(Joueur proprietaire, ArrayList<Case> position){
-        this.proprietaire = proprietaire;
+    public Cuirasse(ArrayList<Case> position){
+
         this.position = position;
         this.coule = false;
     }

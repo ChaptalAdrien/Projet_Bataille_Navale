@@ -8,8 +8,8 @@ public class Destroyer extends Bateau {
     private boolean fusee;
   
     
-    public Destroyer(Joueur proprietaire, ArrayList<Case> position){
-        this.proprietaire = proprietaire;
+    public Destroyer(ArrayList<Case> position){
+
         this.position = position;
         this.fusee = true;
         this.coule = false;
@@ -18,7 +18,7 @@ public class Destroyer extends Bateau {
     public ArrayList<Case> tirer(Case c){
         
         if(fusee){
-            this.proprietaire.getAdversaire().getGrille().fuseeEclairante(); //On applique l'effet de la fusee éclairante au premier tir du destroyer sur la grille de l'adversaire;
+            //this.proprietaire.getAdversaire().getGrille().fuseeEclairante(); //On applique l'effet de la fusee éclairante au premier tir du destroyer sur la grille de l'adversaire;
             this.fusee = false;
         }
         
