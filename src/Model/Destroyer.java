@@ -8,9 +8,9 @@ public class Destroyer extends Bateau {
     private boolean fusee;
   
     
-    public Destroyer(ArrayList<Case> position){
-
-        this.position = position;
+    public Destroyer(){
+        
+        this.taille = 3;
         this.fusee = true;
         this.coule = false;
     }

@@ -46,7 +46,7 @@ public class Case {
     public boolean bateau(Joueur joueur){
         boolean b = false;
         ArrayList<Bateau> bateaux = joueur.getBateaux();
-        ArrayList<Case> position;
+        ArrayList<Case> position = new ArrayList<Case>();
         
         for (int i = 0; i < bateaux.size(); i++){
             
@@ -86,6 +86,8 @@ public class Case {
         
         return icone;
     }
+    
+    
     
     
 }

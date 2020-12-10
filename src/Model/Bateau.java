@@ -4,14 +4,26 @@ import java.util.ArrayList;
 
 public abstract class Bateau {
     
+    protected int taille;
     protected ArrayList<Case> position;
     protected boolean coule;
     
+    //Getters
     
     public ArrayList<Case> getPosition(){
         return this.position;
     }
     
+    public int getTaille(){
+        
+        return this.taille;
+    }
+    
+    //Setters
+    
+    public void setPosition(ArrayList<Case> position){
+        this.position = position;
+    }
     
     //Méthode de tir du bateau pour les bateau qui ne touchent qu'une seule case
     //La méthode prend en paramétre la case visée

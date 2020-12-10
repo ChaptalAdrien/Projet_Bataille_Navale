@@ -30,6 +30,10 @@ public class ControllerPartie {
         
         Partie partie = new Partie(tailleX, tailleY);
         
+        partie.getJ1().initBateau();
+        partie.getOrdi().initBateau();
+                
+        
         this.vue.affichage(partie);
     }
     

@@ -6,9 +6,9 @@ import java.util.ArrayList;
 
 public class SousMarin extends Bateau {
      
-    public SousMarin(Joueur proprietaire, ArrayList<Case> position){
-
-        this.position = position;
+    public SousMarin(){
+        
+        this.taille = 1;
         this.coule = false;
     }
     
