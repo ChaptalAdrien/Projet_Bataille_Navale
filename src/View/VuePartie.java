@@ -22,6 +22,8 @@ public class VuePartie {
         int tailleX = grilleJoueur.getTailleX();
         int tailleY = grilleJoueur.getTailleY();
         
+        System.out.println("\n" + "Legende : o - bateau | ¤ - Bateau touché | x - case touchée " + "\n");
+        
         System.out.println("---------- Grille du Joueur ----------");
         
         grille = "    ";
@@ -50,7 +52,7 @@ public class VuePartie {
             
             for(int j=0; j < tailleY; j++) {
                 
-                icone = grilleJoueur.getCase(i,j).icone(partie.getJ1());
+                icone = grilleJoueur.getCase(i,j).icone(partie.getJ1(), false);
                 grille +=  "[" + icone + "]";
                 
             }
@@ -87,7 +89,7 @@ public class VuePartie {
             
             for(int j=0; j < tailleY; j++) {
                 
-                icone = grilleOrdi.getCase(i,j).icone(partie.getJ1());
+                icone = grilleOrdi.getCase(i,j).icone(partie.getOrdi(), true);
                 grille +=  "[" + icone + "]";
                 
             }

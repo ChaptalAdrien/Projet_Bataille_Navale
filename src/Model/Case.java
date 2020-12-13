@@ -9,7 +9,7 @@ public class Case {
     private int x;
     private int y;
     private boolean etat; // TRUE == Case non touchée / FALSE = Case touchée
-
+    private String icone;
     
     
     public Case(int x, int y){
@@ -17,6 +17,7 @@ public class Case {
         this.x = x;
         this.y = y;
         this.etat = true;
+        this.icone = " ";
         
     }
 
@@ -56,6 +57,20 @@ public class Case {
                 
                 if(position.get(j).getX() == this.x && position.get(j).getY() == this.y){
                     b = true;
+                    
+                    //Icone selon la type de bateau
+                    if(position.size() == 1){
+                        this.icone = "o";
+                    }else if(position.size() == 2){
+                        this.icone = "+";
+                    }else if(position.size() == 3){
+                        this.icone = "#";
+                    }else if(position.size() == 4){
+                        this.icone = "~";
+                    }else{
+                        this.icone = "@";
+                    }
+                    
                     break;
                 }
                 
@@ -68,23 +83,18 @@ public class Case {
         return b;
     }
     
-    public String icone(Joueur joueur){
-        String icone = "";
+    public String icone(Joueur joueur, boolean flou){
         boolean bateau = this.bateau(joueur);
         
-        
         if(bateau && this.etat == false){
-            icone = "¤";
-        }else if(bateau){
-            icone = "o";
+            this.icone = "¤";
+        }else if(bateau && flou){
+            this.icone = " ";
         }else if (this.etat = false){
-            icone = "x";
-        }else if (this.etat = true){
-            icone = " ";
+            this.icone = "xx";
         }
         
-        
-        return icone;
+        return this.icone;
     }
     
     

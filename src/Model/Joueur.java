@@ -1,6 +1,7 @@
 package Model;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 
 public abstract class Joueur {
@@ -38,22 +39,50 @@ public abstract class Joueur {
         
         ArrayList<Case> caseDisponibles = this.grillePerso.toArrayList();
         
-        Croiseur croiseur = new Croiseur();
+        //Creation cuirasse
         Cuirasse cuirasse = new Cuirasse();
-        Destroyer destroyer = new Destroyer();
-        SousMarin sousMarin = new SousMarin();
-        
-        //Ajout des bateaux
-        this.bateaux.add(croiseur);
         this.bateaux.add(cuirasse);
-        this.bateaux.add(destroyer);
-        this.bateaux.add(sousMarin);
-        
-        
-        caseDisponibles = this.PositionnerBateau(croiseur, caseDisponibles);
         caseDisponibles = this.PositionnerBateau(cuirasse, caseDisponibles);
-        caseDisponibles = this.PositionnerBateau(destroyer, caseDisponibles);
-        caseDisponibles = this.PositionnerBateau(sousMarin, caseDisponibles);
+        
+        //Creation croiseurs
+        Croiseur croiseur1 = new Croiseur();
+        Croiseur croiseur2 = new Croiseur();
+        
+        this.bateaux.add(croiseur1);
+        this.bateaux.add(croiseur2);
+        
+        //Creation Destroyer
+        Destroyer destroyer1 = new Destroyer();
+        Destroyer destroyer2 = new Destroyer();
+        Destroyer destroyer3 = new Destroyer();
+        
+        this.bateaux.add(destroyer1);
+        this.bateaux.add(destroyer2);
+        this.bateaux.add(destroyer3);
+        
+        caseDisponibles = this.PositionnerBateau(croiseur1, caseDisponibles);
+        caseDisponibles = this.PositionnerBateau(croiseur2, caseDisponibles);
+        
+        caseDisponibles = this.PositionnerBateau(destroyer1, caseDisponibles);
+        caseDisponibles = this.PositionnerBateau(destroyer2, caseDisponibles);
+        caseDisponibles = this.PositionnerBateau(destroyer3, caseDisponibles);
+        
+        //Creation sous marins
+        SousMarin sousMarin1 = new SousMarin();
+        SousMarin sousMarin2 = new SousMarin();
+        SousMarin sousMarin3 = new SousMarin();
+        SousMarin sousMarin4 = new SousMarin();
+        
+        this.bateaux.add(sousMarin1);
+        this.bateaux.add(sousMarin2);
+        this.bateaux.add(sousMarin3);
+        this.bateaux.add(sousMarin4);
+        
+        caseDisponibles = this.PositionnerBateau(sousMarin1, caseDisponibles);
+        caseDisponibles = this.PositionnerBateau(sousMarin2, caseDisponibles);
+        caseDisponibles = this.PositionnerBateau(sousMarin3, caseDisponibles);
+        caseDisponibles = this.PositionnerBateau(sousMarin4, caseDisponibles);
+        
     }
     
     public ArrayList<Case> PositionnerBateau(Bateau bateau, ArrayList<Case> casesDisponibles){
@@ -61,16 +90,17 @@ public abstract class Joueur {
         Case origine;
         Case c;
         int n;
-        int direction; //1 = vertical / 2= Horizontal
+        boolean direction; //1 = vertical / 2= Horizontal
+        Random r = new Random();
         ArrayList<Case> position = new ArrayList<Case>();
         
-        direction = (int) (Math.random() * (1 - 0));
+        direction = r.nextBoolean();
         n = (int) (Math.random() * ( casesDisponibles.size() - 1 ));
         
         origine = casesDisponibles.get(n);
         
           
-        if(direction == 1 && bateau.taille > (this.grillePerso.getTailleY() - origine.getY())){
+        if(direction == true && bateau.taille > (this.grillePerso.getTailleY() - origine.getY())){
                 
             for(int i = 0; i < bateau.getTaille(); i++){
                 c =this.grillePerso.getCase(origine.getX(), origine.getY()-i);
@@ -78,7 +108,7 @@ public abstract class Joueur {
                 casesDisponibles.remove(c);
                 
             }
-        }else if (direction == 1){
+        }else if (direction == true){
             
             for(int i = 0; i < bateau.getTaille(); i++){
                 
@@ -87,7 +117,7 @@ public abstract class Joueur {
                 casesDisponibles.remove(c);
             }
             
-        }else if(direction == 0 && bateau.taille > (this.grillePerso.getTailleX() - origine.getX())){
+        }else if(direction == false && bateau.taille > (this.grillePerso.getTailleX() - origine.getX())){
                 
             for(int i = 0; i < bateau.getTaille(); i++){
                 
