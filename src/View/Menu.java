@@ -11,7 +11,7 @@ public class Menu extends JFrame implements ActionListener {
         // créer un frame 
         frame = new JFrame("Bataille Navale - MENU"); 
         // créer un objet
-        JDialogExemple obj = new JDialogExemple(); 
+        JDialogMenu obj = new JDialogMenu(); 
         // créer un panneau 
         JPanel panel = new JPanel(); 
         JButton btn = new JButton("Jouer"); 
