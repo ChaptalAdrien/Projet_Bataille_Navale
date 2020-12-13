@@ -14,11 +14,11 @@ public class Menu extends JFrame implements ActionListener {
         JDialogMenu obj = new JDialogMenu(); 
         // créer un panneau 
         JPanel panel = new JPanel(); 
-        JButton btn = new JButton("Jouer"); 
+        JButton buttonJouer = new JButton("Jouer");
         // ajouter le listener au bouton
-        btn.addActionListener(obj); 
+        boutonJouer.addActionListener(obj); 
         // ajouter un bouton au panneau
-        panel.add(btn); 
+        panel.add(boutonJouer); 
         frame.add(panel); 
         frame.setSize(300, 300); 
         frame.show(); 
@@ -29,7 +29,7 @@ public class Menu extends JFrame implements ActionListener {
         if(s.equals("Jouer"))
         {
             // Créer une boîte de dialogue
-            JDialog d = new JDialog(frame, "Boite de dialogue"); 
+            JDialog affichageJeu = new JDialog(frame, "Bataille Navale"); 
             // Créer une étiquette
             JLabel l = new JLabel("Ceci est une boite de dialogue."); 
             // Ajouter l'étiquette à la boîte de dialogue 
