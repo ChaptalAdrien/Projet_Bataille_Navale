@@ -61,17 +61,18 @@ public class Case {
                     
                     //Icone selon la type de bateau
                     if(bateaux.get(i).getTaille() == 1){
-                        this.icone = "+";
+                        this.icone = "O";
                     }
-                    }else if(bateaux.get(i).getTaille() == 3){
+                    else if(bateaux.get(i).getTaille() == 3){
                         this.icone = "#";
                     }else if(bateaux.get(i).getTaille() == 5){
                         this.icone = "%";
                     }else if(bateaux.get(i).getTaille() == 7) {
                         this.icone = "@";
-                    }
-                    if(b){
+                    }               
                     
+                }
+                if(b){                 
                         break;
                     }
                 }
