@@ -6,12 +6,14 @@
             <file>file:/C:/Users/Adrien/Documents/GitHub/Projet_Bataille_Navale/src/Model/Destroyer.java</file>
             <file>file:/C:/Users/Adrien/Documents/GitHub/Projet_Bataille_Navale/src/Model/SousMarin.java</file>
             <file>file:/C:/Users/Adrien/Documents/GitHub/Projet_Bataille_Navale/src/Model/Grille.java</file>
+            <file>file:/C:/Users/Adrien/Documents/GitHub/Projet_Bataille_Navale/src/Main/Main.java</file>
             <file>file:/C:/Users/Adrien/Documents/GitHub/Projet_Bataille_Navale/src/Model/Case.java</file>
             <file>file:/C:/Users/Adrien/Documents/GitHub/Projet_Bataille_Navale/src/Model/Bateau.java</file>
-            <file>file:/C:/Users/Adrien/Documents/GitHub/Projet_Bataille_Navale/src/Controller/ControllerMenu.java</file>
+            <file>file:/C:/Users/Adrien/Documents/GitHub/Projet_Bataille_Navale/src/View/VueMenu.java</file>
             <file>file:/C:/Users/Adrien/Documents/GitHub/Projet_Bataille_Navale/src/Model/Joueur.java</file>
             <file>file:/C:/Users/Adrien/Documents/GitHub/Projet_Bataille_Navale/src/Controller/ControllerBateau.java</file>
             <file>file:/C:/Users/Adrien/Documents/GitHub/Projet_Bataille_Navale/src/Model/Cuirasse.java</file>
+            <file>file:/C:/Users/Adrien/Documents/GitHub/Projet_Bataille_Navale/src/Model/Partie.java</file>
             <file>file:/C:/Users/Adrien/Documents/GitHub/Projet_Bataille_Navale/src/Model/Ordinateur.java</file>
             <file>file:/C:/Users/Adrien/Documents/GitHub/Projet_Bataille_Navale/src/Model/Croiseur.java</file>
             <file>file:/C:/Users/Adrien/Documents/GitHub/Projet_Bataille_Navale/src/View/VuePartie.java</file>

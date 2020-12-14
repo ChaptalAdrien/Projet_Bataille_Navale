@@ -16,13 +16,13 @@ public class Destroyer extends Bateau {
         this.coule = false;
     }
     
-    public ArrayList<Case> tirer(Case c){
+    public ArrayList<Case> tirer(Case c, Grille g){
         
         if(fusee){
-            //this.proprietaire.getAdversaire().getGrille().fuseeEclairante(); //On applique l'effet de la fusee éclairante au premier tir du destroyer sur la grille de l'adversaire;
+            //TO DO : On applique l'effet de la fusee éclairante au premier tir du destroyer sur la grille de l'adversaire;
             this.fusee = false;
         }
         
-        return super.tirer(c);
+        return super.tirer(c, g);
     }
 }

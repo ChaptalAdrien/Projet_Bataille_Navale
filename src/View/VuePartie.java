@@ -12,17 +12,23 @@ import java.util.Scanner;
 
 public class VuePartie {
         
-    
+    private boolean debug;
     private ControllerPartie cPartie;
     
     public VuePartie(ControllerPartie cp){
         this.cPartie = cp;
+        this.debug = false;
     }
     
-    public void affichage(Partie partie){
+    public void setDebug(boolean b){
+        this.debug = b;
+    }
+    
+    public void affichage(Partie partie) throws InterruptedException{
         
         Scanner s = new Scanner(System.in);
         int choix;
+        boolean choixValide = false;
         
         this.afficherGrilles(partie);
         
@@ -36,15 +42,17 @@ public class VuePartie {
         do{
             if(choix == 1){
                 this.cPartie.J1Deplacer();
+                choixValide = true;
             }
             else if(choix == 2){
                 this.cPartie.J1tirrer();
+                choixValide = true;
             }
             else{
                 System.out.println("Veuillez rentrer une valeur valide");
             }
             
-        }while(choix !=1 || choix!=2);
+        }while(!choixValide);
         
         this.cPartie.OrdiTirer();
         
@@ -61,7 +69,7 @@ public class VuePartie {
         int tailleX = grilleJoueur.getTailleX();
         int tailleY = grilleJoueur.getTailleY();
         
-        System.out.println("\n" + "Legende : o - bateau | ¤ - Bateau touché | x - case touchée " + "\n");
+        System.out.println("\n" + "Legende : X - Bateau touché | ° - coup dans l'eau " + "\n");
         
         System.out.println("---------- Grille du Joueur ----------");
         
@@ -137,6 +145,8 @@ public class VuePartie {
         grille += "\n";
         System.out.println(grille);
         
+        
     }
+    
     
 }

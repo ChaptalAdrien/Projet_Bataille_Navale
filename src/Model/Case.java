@@ -49,6 +49,7 @@ public class Case {
         ArrayList<Bateau> bateaux = joueur.getBateaux();
         ArrayList<Case> position = new ArrayList<Case>();
         
+        
         for (int i = 0; i < bateaux.size(); i++){
             
             position = bateaux.get(i).getPosition();
@@ -59,26 +60,27 @@ public class Case {
                     b = true;
                     
                     //Icone selon la type de bateau
-                    if(position.size() == 1){
-                        this.icone = "o";
-                    }else if(position.size() == 2){
+                    if(bateaux.get(i).getTaille() == 1){
                         this.icone = "+";
-                    }else if(position.size() == 3){
+                    }
+                    }else if(bateaux.get(i).getTaille() == 3){
                         this.icone = "#";
-                    }else if(position.size() == 4){
+                    }else if(bateaux.get(i).getTaille() == 5){
                         this.icone = "%";
-                    }else{
+                    }else if(bateaux.get(i).getTaille() == 7) {
                         this.icone = "@";
                     }
+                    if(b){
                     
-                    break;
+                        break;
+                    }
                 }
                 
                 if(b){
                     break;
                 }
             }
-        }
+      
         
         return b;
     }
@@ -87,11 +89,11 @@ public class Case {
         boolean bateau = this.bateau(joueur);
         
         if(bateau && this.etat == false){
-            this.icone = "¤";
+            this.icone = "X";
         }else if(bateau && flou){
             this.icone = " ";
         }else if (this.etat == false){
-            this.icone = "x";
+            this.icone = "°";
         }
         
         return this.icone;

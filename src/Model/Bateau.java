@@ -28,6 +28,10 @@ public abstract class Bateau {
         return this.taille;
     }
     
+    public boolean getCoule(){
+        return this.coule;
+    }
+    
     //Setters
     
     public void setPosition(ArrayList<Case> position){
@@ -37,7 +41,7 @@ public abstract class Bateau {
     //Méthode de tir du bateau pour les bateau qui ne touchent qu'une seule case
     //La méthode prend en paramétre la case visée
     //Elle renvoie la case dans une ArrayList
-    public ArrayList<Case> tirer(Case c){
+    public ArrayList<Case> tirer(Case c, Grille g){
         
         ArrayList<Case> caseTouchee = new ArrayList<Case>();
         caseTouchee.add(c);

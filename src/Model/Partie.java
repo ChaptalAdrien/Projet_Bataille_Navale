@@ -10,6 +10,7 @@ public class Partie {
     private Ordinateur ordi;
     private int id;
     private LocalDate date;
+    private boolean finPartie;
     
     //CONSTRUCTEUR
     
@@ -18,6 +19,7 @@ public class Partie {
         this.j1 = new J1(tailleX, tailleY);
         this.ordi = new Ordinateur(tailleX, tailleY);
         this.id = (int) Math.random()*100;
+        this.finPartie = false;
         
     }
     

@@ -8,7 +8,7 @@ public class VueMenu {
     
    
     
-    public void afficherMenuConsole(){
+    public void afficherMenuConsole() throws InterruptedException{
         System.out.println("---------------------------------------------------------------------------------------");
         System.out.println("---------------------------------------------------------------------------------------");
         System.out.println("                       << BIENVENUE SUR LE JEU BATAILLE NAVALE >>                      ");
@@ -19,6 +19,7 @@ public class VueMenu {
         System.out.println("");
         System.out.println(" 1 - Lancer une Partie ");
         System.out.println(" 2 - Charger une Partie ");
+        System.out.println(" 3 - Quitter ");
         System.out.println(" 3 - Quitter ");
         
         Scanner s = new Scanner(System.in);

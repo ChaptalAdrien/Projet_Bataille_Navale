@@ -17,7 +17,7 @@ public class ControllerPartie {
     
     //TODO : Gerer les execptions pour les valeurs de la taille de la grille 
     
-    public void creerPartie() {
+    public void creerPartie() throws InterruptedException {
         
         int tailleX;
         int tailleY;
@@ -55,42 +55,71 @@ public class ControllerPartie {
         
         for(int i = 0; i < bateaux.size(); i++){
             
-            System.out.println("Tir avec un " + bateaux.get(i).getType());
-            System.out.println(("Choissez la case visée : (X,Y)"));
+            if(!bateaux.get(i).getCoule()){
             
-            do{
-            
-                System.out.println("X = ");
-                x = s.nextInt();
-                
-                if(x < 0 || x > tailleX - 1){
-                    System.out.println("Choissisez une valeur valide pour x");
-                }
-                
-            }while(x < 0 || x > tailleX - 1);    
-                
-            do{
-            
-                System.out.println("Y = ");
-                y = s.nextInt();
-                
-                if(y < 0 || y > tailleY - 1){
-                    System.out.println("Choissisez une valeur valide pour Y");
-                }
-                
-            }while(y < 0 || y > tailleY - 1);         
+                    System.out.println("Tir avec un " + bateaux.get(i).getType());
+                    System.out.println(("Choissez la case visée : (X,Y)"));
 
-            Case c = new Case(x,y);
-            
-            this.model.getJ1().tirer(this.model, bateaux.get(i), c);
-            vue.afficherGrilles(model);
+                do{
+
+                    System.out.println("X = ");
+                    x = s.nextInt();
+
+                    if(x < 0 || x > tailleX - 1){
+                        System.out.println("Choissisez une valeur valide pour x");
+                    }
+
+                }while(x < 0 || x > tailleX - 1);    
+
+                do{
+
+                    System.out.println("Y = ");
+                    y = s.nextInt();
+
+                    if(y < 0 || y > tailleY - 1){
+                        System.out.println("Choissisez une valeur valide pour Y");
+                    }
+
+                }while(y < 0 || y > tailleY - 1);         
+
+                Case c = new Case(x,y);
+
+                this.model.getJ1().tirer(this.model, bateaux.get(i), c);
+                vue.afficherGrilles(model);
+            }
         }
         
-        
-    }
-
-    public void OrdiTirer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+
+    public void OrdiTirer() throws InterruptedException{
+        
+        int x;
+        int y;
+        int tailleX = model.getOrdi().getGrille().getTailleX();
+        int tailleY = model.getOrdi().getGrille().getTailleY(); 
+        
+        ArrayList<Bateau> bateaux = model.getOrdi().getBateaux();
+        
+        for(int i = 0; i < bateaux.size(); i++){
+            
+            System.out.println("L'ordinateur choisi son tir ...");
+            Thread.sleep(1000);
+            
+            x =(int) (Math.random() * (tailleX) + 1); 
+
+            y = (int) (Math.random() * (tailleX - 0) + 1); 
+            
+            System.out.println("L'ordinateur tirre avec un " + bateaux.get(i).getType() + " à la case : " + x + ", " + y);
+            Thread.sleep(2000);
+            
+            Case c = new Case(x,y);
+            
+            this.model.getOrdi().tirer(this.model, bateaux.get(i), c);
+            vue.afficherGrilles(model);
+        }
+    }
+        
 }
+
+
