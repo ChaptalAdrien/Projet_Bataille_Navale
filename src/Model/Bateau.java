@@ -7,8 +7,17 @@ public abstract class Bateau {
     protected int taille;
     protected ArrayList<Case> position;
     protected boolean coule;
+    protected String type;
     
     //Getters
+    
+    public Bateau(String type){
+        this.type = type;
+    }
+    
+    public String getType(){
+        return this.type;
+    }
     
     public ArrayList<Case> getPosition(){
         return this.position;
@@ -17,6 +26,10 @@ public abstract class Bateau {
     public int getTaille(){
         
         return this.taille;
+    }
+    
+    public boolean getCoule(){
+        return this.coule;
     }
     
     //Setters
@@ -28,7 +41,7 @@ public abstract class Bateau {
     //Méthode de tir du bateau pour les bateau qui ne touchent qu'une seule case
     //La méthode prend en paramétre la case visée
     //Elle renvoie la case dans une ArrayList
-    public ArrayList<Case> tirer(Case c){
+    public ArrayList<Case> tirer(Case c, Grille g){
         
         ArrayList<Case> caseTouchee = new ArrayList<Case>();
         caseTouchee.add(c);

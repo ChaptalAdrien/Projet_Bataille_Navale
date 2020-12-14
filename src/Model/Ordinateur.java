@@ -11,4 +11,7 @@ public class Ordinateur extends Joueur {
         this.difficulty = 1;
     }
     
+    public Joueur getAdversaire(Partie p){
+       return p.getJ1();
+   }
 }
