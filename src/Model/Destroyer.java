@@ -6,7 +6,6 @@ public class Destroyer extends Bateau {
     
 
     private boolean fusee;
-  
     
     public Destroyer(String type){
         
@@ -19,10 +18,15 @@ public class Destroyer extends Bateau {
     public ArrayList<Case> tirer(Case c, Grille g){
         
         if(fusee){
-            //TO DO : On applique l'effet de la fusee éclairante au premier tir du destroyer sur la grille de l'adversaire;
-            this.fusee = false;
+            this.fusee = false; //au premier tir on tire la fusée
         }
         
         return super.tirer(c, g);
+    
     }
+    
+    public boolean getFusee(){
+        return this.fusee;
+    }
+    
 }

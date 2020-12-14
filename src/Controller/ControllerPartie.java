@@ -11,8 +11,8 @@ public class ControllerPartie {
     private VuePartie vue;
     private Partie model;
     
-    public ControllerPartie(){
-        this.vue = new VuePartie(this);
+    public ControllerPartie(boolean debug){
+        this.vue = new VuePartie(this, debug);
     }
     
     //TODO : Gerer les execptions pour les valeurs de la taille de la grille 
@@ -59,6 +59,7 @@ public class ControllerPartie {
 
     public void J1tirrer() throws InterruptedException {
         
+        boolean fusee = false;
         boolean finPartie;
         Scanner s = new Scanner(System.in);
         J1 joueur = this.model.getJ1();
@@ -73,6 +74,15 @@ public class ControllerPartie {
         ArrayList<Bateau> bateaux = joueur.getBateaux();
         
         for(int i = 0; i < bateaux.size(); i++){
+            
+            if(bateaux.get(i).getType() == "Destroyer"){
+                    
+                    Destroyer d = (Destroyer) bateaux.get(i);
+                    
+                    fusee = d.getFusee();
+                    
+                }
+            
             
             if(!bateaux.get(i).getCoule()){
             
@@ -109,8 +119,23 @@ public class ControllerPartie {
                     return;
                 }
                 
+                if(bateaux.get(i).getType() == "Destroyer"){
+                    
+                    Destroyer d = (Destroyer) bateaux.get(i);
+                    
+                    if(d.getFusee()){
+                        
+                    }
+                    
+                }
                 
-                vue.afficherGrilles(model);
+                
+                if(fusee){
+                    this.vue.afficherGrillesFusee(this.model);
+                }else{
+                    this.vue.afficherGrilles(this.model);
+                }
+                
                 
             }
         }

@@ -8,6 +8,7 @@ public abstract class Bateau {
     protected ArrayList<Case> position;
     protected boolean coule;
     protected String type;
+    protected boolean orientation; // 1 = verticval - 0 = horrizontal
     
     //Getters
     
@@ -36,6 +37,10 @@ public abstract class Bateau {
     
     public void setPosition(ArrayList<Case> position){
         this.position = position;
+    }
+    
+    public void setOrientation(boolean b){
+        this.orientation = b;
     }
     
     //Méthode de tir du bateau pour les bateau qui ne touchent qu'une seule case
@@ -88,5 +93,6 @@ public abstract class Bateau {
         }
         
     }
+    
 
 }

@@ -87,7 +87,7 @@ public abstract class Joueur {
         Case origine;
         Case c;
         int n;
-        boolean direction; //1 = vertical / 2= Horizontal
+        boolean direction; //1 = vertical / 0 = Horizontal
         
         Random r = new Random();
         ArrayList<Case> position = new ArrayList<Case>();
@@ -100,6 +100,7 @@ public abstract class Joueur {
             copieCasesDispo = (ArrayList<Case>) casesDisponibles.clone();
 
             direction = r.nextBoolean();
+            bateau.setOrientation(direction);
             n = (int) (Math.random() * ( casesDisponibles.size() - 1 ));
 
             origine = casesDisponibles.get(n);
@@ -155,6 +156,7 @@ public abstract class Joueur {
         }
         
         bateau.setPosition(position);
+        
         
         casesDisponibles = (ArrayList<Case>) copieCasesDispo.clone();
         
@@ -225,4 +227,6 @@ public abstract class Joueur {
         
         return finPartie;
     }
+    
+    
 }

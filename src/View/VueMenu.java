@@ -18,9 +18,9 @@ public class VueMenu {
         System.out.println("                                Choisissez une action                                  ");
         System.out.println("");
         System.out.println(" 1 - Lancer une Partie ");
-        System.out.println(" 2 - Charger une Partie ");
-        System.out.println(" 3 - Quitter ");
-        System.out.println(" 3 - Quitter ");
+        System.out.println(" 2 - Charger une Partie (Non disponible)");
+        System.out.println(" 3 - Mode Demo ");
+        System.out.println(" 4 - Quitter ");
         
         Scanner s = new Scanner(System.in);
         int c = s.nextInt();
