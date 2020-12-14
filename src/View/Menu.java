@@ -31,7 +31,7 @@ public class Menu extends JFrame implements ActionListener {
             // Créer une boîte de dialogue
             JDialog affichageJeu = new JDialog(frame, "Bataille Navale"); 
             // Créer une étiquette
-            JLabel l = new JLabel("Ceci est une boite de dialogue."); 
+            JLabel l = new JLabel("Bataille Navale"); 
             // Ajouter l'étiquette à la boîte de dialogue 
             d.add(l); 
             // Définir la taille de la boîte de dialogue 
