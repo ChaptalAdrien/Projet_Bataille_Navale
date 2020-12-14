@@ -36,22 +36,41 @@ public class ControllerPartie {
         partie.getJ1().initBateau();
         partie.getOrdi().initBateau();
                 
+        this.execPartie(); 
         
-        this.vue.affichage(partie);
     }
-
+    
+    public void execPartie() throws InterruptedException{
+        
+        int nTour = 0;
+        
+        while(!model.estTermine()){
+            this.vue.affichage(model);
+            nTour++;
+        }
+        
+        this.vue.finPartie(nTour, this.model.getvictoire());
+        
+    }
+    
     public void J1Deplacer() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public void J1tirrer() {
+    public void J1tirrer() throws InterruptedException {
+        
+        boolean finPartie;
         Scanner s = new Scanner(System.in);
+        J1 joueur = this.model.getJ1();
         int x;
         int y;
-        int tailleX = model.getJ1().getGrille().getTailleX();
-        int tailleY = model.getJ1().getGrille().getTailleY(); 
+        int tailleX = joueur.getGrille().getTailleX();
+        int tailleY = joueur.getGrille().getTailleY(); 
+        ArrayList<Case> casesTouchee = new ArrayList<Case>();
         
-        ArrayList<Bateau> bateaux = model.getJ1().getBateaux();
+        
+        
+        ArrayList<Bateau> bateaux = joueur.getBateaux();
         
         for(int i = 0; i < bateaux.size(); i++){
             
@@ -84,10 +103,19 @@ public class ControllerPartie {
 
                 Case c = new Case(x,y);
 
-                this.model.getJ1().tirer(this.model, bateaux.get(i), c);
+                if(joueur.tirer(this.model, bateaux.get(i), c)){
+                    this.model.setFinPartie(true);
+                    this.model.setVictoire(true);
+                    return;
+                }
+                
+                
                 vue.afficherGrilles(model);
+                
             }
         }
+        
+        
         
     }
     
@@ -103,23 +131,24 @@ public class ControllerPartie {
         
         for(int i = 0; i < bateaux.size(); i++){
             
-            System.out.println("L'ordinateur choisi son tir ...");
+            System.out.println("L'adversaire ajuste son tir ...");
             Thread.sleep(1000);
             
-            x =(int) (Math.random() * (tailleX) + 1); 
+            x =(int) (Math.random() * (tailleX - 1)); 
 
-            y = (int) (Math.random() * (tailleX - 0) + 1); 
+            y = (int) (Math.random() * (tailleY - 1)); 
             
-            System.out.println("L'ordinateur tirre avec un " + bateaux.get(i).getType() + " à la case : " + x + ", " + y);
-            Thread.sleep(2000);
+            System.out.println("L'Adversaire tirre avec un " + bateaux.get(i).getType() + " à la case : " + x + ", " + y);
+            Thread.sleep(1000);
             
             Case c = new Case(x,y);
             
             this.model.getOrdi().tirer(this.model, bateaux.get(i), c);
-            vue.afficherGrilles(model);
+           
         }
     }
-        
+    
+    
 }
 
 

@@ -11,6 +11,7 @@ public class Partie {
     private int id;
     private LocalDate date;
     private boolean finPartie;
+    private boolean victoire;
     
     //CONSTRUCTEUR
     
@@ -39,6 +40,25 @@ public class Partie {
     public LocalDate getDate() {
         return date;
     }
+
+    public boolean estTermine() {
+        return finPartie;
+    }
     
+    public boolean getvictoire(){
+        return victoire;
+    }
+    
+    public boolean getFinPartie(){
+        return this.finPartie;
+    }
+    
+    public void setFinPartie(boolean finPartie){
+        this.finPartie = finPartie;
+    }
+    
+    public void setVictoire(boolean b){
+        this.victoire = b;
+    }
     
 }

@@ -88,57 +88,81 @@ public abstract class Joueur {
         Case c;
         int n;
         boolean direction; //1 = vertical / 2= Horizontal
+        
         Random r = new Random();
         ArrayList<Case> position = new ArrayList<Case>();
+        ArrayList<Case> copieCasesDispo = new ArrayList<Case>(); //
+        boolean positionValide = false;
         
-        direction = r.nextBoolean();
-        n = (int) (Math.random() * ( casesDisponibles.size() - 1 ));
-        
-        origine = casesDisponibles.get(n);
-        
-          
-        if(direction == true && bateau.taille > (this.grillePerso.getTailleY() - origine.getY())){
-                
-            for(int i = 0; i < bateau.getTaille(); i++){
-                c = this.grillePerso.getCase(origine.getX(), origine.getY()-i);
-                position.add(c);
-                casesDisponibles.remove(c);
-                
+        while(!positionValide){
+            
+            position.clear();
+            copieCasesDispo = (ArrayList<Case>) casesDisponibles.clone();
+
+            direction = r.nextBoolean();
+            n = (int) (Math.random() * ( casesDisponibles.size() - 1 ));
+
+            origine = casesDisponibles.get(n);
+            
+
+            if(direction == true && bateau.taille > (this.grillePerso.getTailleY() - origine.getY())){
+
+                for(int i = 0; i < bateau.getTaille(); i++){
+                    c = this.grillePerso.getCase(origine.getX(), origine.getY()-i);
+                    position.add(c);
+                    copieCasesDispo.remove(c);
+
+                }
+            }else if (direction == true){
+
+                for(int i = 0; i < bateau.getTaille(); i++){
+
+                    c = this.grillePerso.getCase(origine.getX(), origine.getY()+i);
+                    position.add(c);
+                    copieCasesDispo.remove(c);
+                }
+
+            }else if(direction == false && bateau.taille > (this.grillePerso.getTailleX() - origine.getX())){
+
+                for(int i = 0; i < bateau.getTaille(); i++){
+
+                    c = this.grillePerso.getCase(origine.getX()-i, origine.getY());
+                    position.add(c);
+                    copieCasesDispo.remove(c);
+                }
+            }else{
+
+                for(int i = 0; i < bateau.getTaille(); i++){
+
+                    c = this.grillePerso.getCase(origine.getX()+i, origine.getY());
+                    position.add(c);
+                    copieCasesDispo.remove(c);
+                } 
+
             }
-        }else if (direction == true){
+
             
             for(int i = 0; i < bateau.getTaille(); i++){
+                if(casesDisponibles.indexOf(position.get(i)) == -1){
+                    positionValide = false;
+                    break;
+                }
                 
-                c = this.grillePerso.getCase(origine.getX(), origine.getY()+i);
-                position.add(c);
-                casesDisponibles.remove(c);
+                positionValide = true;
             }
             
-        }else if(direction == false && bateau.taille > (this.grillePerso.getTailleX() - origine.getX())){
-                
-            for(int i = 0; i < bateau.getTaille(); i++){
-                
-                c = this.grillePerso.getCase(origine.getX()-i, origine.getY());
-                position.add(c);
-                casesDisponibles.remove(c);
-            }
-        }else{
             
-            for(int i = 0; i < bateau.getTaille(); i++){
-                
-                c = this.grillePerso.getCase(origine.getX()+i, origine.getY());
-                position.add(c);
-                casesDisponibles.remove(c);
-            } 
- 
         }
         
         bateau.setPosition(position);
+        
+        casesDisponibles = (ArrayList<Case>) copieCasesDispo.clone();
+        
         return casesDisponibles;
     }
     
-    public void tirer(Partie p, Bateau bateau, Case c){
-        
+    public boolean tirer(Partie p, Bateau bateau, Case c) throws InterruptedException{
+        boolean finPartie;
         int x;
         int y;
         
@@ -153,6 +177,52 @@ public abstract class Joueur {
             grilleVisee.getCase(x, y).setEtat(false);
         }
         
+       finPartie = this.impact(this.getAdversaire(p), caseTouchees); 
+        
+       return finPartie; 
+        
     }
     
+    public boolean impact(Joueur j, ArrayList<Case> casesTouchee) throws InterruptedException{
+        ArrayList<Bateau> bateaux = j.getBateaux();
+        int compteurTouche= 0;
+        boolean finPartie = false;
+        int compteurCoule = 0;
+        
+        
+        for(int i = 0; i < bateaux.size(); i++){
+            
+            if(!bateaux.get(i).getCoule()){
+                
+                if(bateaux.get(i).estTouche(casesTouchee)){
+                    System.out.println("Touché !");
+                    compteurTouche ++;
+                }
+            
+                if(bateaux.get(i).getCoule()){
+                    
+                    System.out.println(bateaux.get(i).getType() + " coulé !");
+                    compteurCoule ++;
+                    
+                }
+
+            }else{
+                compteurCoule++;
+            }
+            
+        }
+        
+        //aucun bateau touché
+        if(compteurTouche == 0){
+            System.out.println("Coup dans l'eau !");
+        }
+        
+        if(compteurCoule == bateaux.size()){
+            finPartie = true;
+        }
+        
+        Thread.sleep(1500);
+        
+        return finPartie;
+    }
 }

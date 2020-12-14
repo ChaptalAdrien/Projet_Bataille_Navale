@@ -51,7 +51,9 @@ public abstract class Bateau {
     //Méthode qui verifie si les cases du bateau ont été touchée par un tir
     //Paramètres : ArrayList des cases visées
     //Elle lance la méthode UpdateEtat qui va verifier si le bateau à été coulé ou non
-    public void estTouchee(ArrayList<Case> casesTouchee){
+    public boolean estTouche(ArrayList<Case> casesTouchee){
+        
+        boolean b = false;
         
         for(int i = 0; i < casesTouchee.size(); i++){
             
@@ -59,7 +61,7 @@ public abstract class Bateau {
                 
                 if (casesTouchee.get(i).getX() == this.position.get(j).getX() && casesTouchee.get(i).getY() == this.position.get(j).getY()){ //Si la case touchee a les meme coordonées qu'une case du bateau
                 
-                    this.position.get(j).setEtat(false);
+                    b = true;
                 
                 }
             }
@@ -67,6 +69,7 @@ public abstract class Bateau {
         
         this.updateEtat();
         
+        return b;
     }
     
     //Passe le boolean coulé sur vrai si toute les cases du bateau ont été touchées
