@@ -63,22 +63,22 @@ public class ControllerPartie {
                 System.out.println("X = ");
                 x = s.nextInt();
                 
-                if(x < 0 || x > tailleX){
+                if(x < 0 || x > tailleX - 1){
                     System.out.println("Choissisez une valeur valide pour x");
                 }
                 
-            }while(x < 0 || x > tailleX);    
+            }while(x < 0 || x > tailleX - 1);    
                 
             do{
             
                 System.out.println("Y = ");
                 y = s.nextInt();
                 
-                if(y < 0 || y > tailleY){
+                if(y < 0 || y > tailleY - 1){
                     System.out.println("Choissisez une valeur valide pour Y");
                 }
                 
-            }while(y < 0 || y > tailleY);         
+            }while(y < 0 || y > tailleY - 1);         
 
             Case c = new Case(x,y);
             

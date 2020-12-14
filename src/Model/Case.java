@@ -90,7 +90,7 @@ public class Case {
             this.icone = "¤";
         }else if(bateau && flou){
             this.icone = " ";
-        }else if (this.etat = false){
+        }else if (this.etat == false){
             this.icone = "x";
         }
         

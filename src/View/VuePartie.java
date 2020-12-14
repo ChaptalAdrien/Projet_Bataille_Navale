@@ -91,7 +91,7 @@ public class VuePartie {
             
             for(int j=0; j < tailleY; j++) {
                 
-                icone = grilleJoueur.getCase(i,j).icone(partie.getJ1(), false);
+                icone = grilleJoueur.getCase(j,i).icone(partie.getJ1(), false);
                 grille +=  "[" + icone + "]";
                 
             }
@@ -128,7 +128,7 @@ public class VuePartie {
             
             for(int j=0; j < tailleY; j++) {
                 
-                icone = grilleOrdi.getCase(i,j).icone(partie.getOrdi(), true);
+                icone = grilleOrdi.getCase(j,i).icone(partie.getOrdi(), true);
                 grille +=  "[" + icone + "]";
                 
             }
