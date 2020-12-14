@@ -7,8 +7,17 @@ public abstract class Bateau {
     protected int taille;
     protected ArrayList<Case> position;
     protected boolean coule;
+    protected String type;
     
     //Getters
+    
+    public Bateau(String type){
+        this.type = type;
+    }
+    
+    public String getType(){
+        return this.type;
+    }
     
     public ArrayList<Case> getPosition(){
         return this.position;

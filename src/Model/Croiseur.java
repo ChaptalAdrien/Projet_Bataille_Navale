@@ -7,9 +7,11 @@ import java.util.ArrayList;
 public class Croiseur extends Bateau {
     
     
-    public Croiseur(){
+    public Croiseur(String type){
+        super(type);
         this.coule = false;
         this.taille = 4;
+        
     }
     
 //    public ArrayList<Case> tirer(Case c){

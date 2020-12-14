@@ -66,7 +66,7 @@ public class Case {
                     }else if(position.size() == 3){
                         this.icone = "#";
                     }else if(position.size() == 4){
-                        this.icone = "~";
+                        this.icone = "%";
                     }else{
                         this.icone = "@";
                     }
@@ -91,7 +91,7 @@ public class Case {
         }else if(bateau && flou){
             this.icone = " ";
         }else if (this.etat = false){
-            this.icone = "xx";
+            this.icone = "x";
         }
         
         return this.icone;

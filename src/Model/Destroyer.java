@@ -8,8 +8,9 @@ public class Destroyer extends Bateau {
     private boolean fusee;
   
     
-    public Destroyer(){
+    public Destroyer(String type){
         
+        super(type);
         this.taille = 3;
         this.fusee = true;
         this.coule = false;

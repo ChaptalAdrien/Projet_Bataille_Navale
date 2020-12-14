@@ -3,19 +3,58 @@ package View;
 
 import Controller.ControllerPartie;
 import Model.Grille;
+
 import Model.Partie;
+import java.util.Scanner;
 
 
 
 
 public class VuePartie {
+        
     
-    private static final String VIOLET = "\u001B[35m";
+    private ControllerPartie cPartie;
+    
+    public VuePartie(ControllerPartie cp){
+        this.cPartie = cp;
+    }
     
     public void affichage(Partie partie){
         
-        String grille = "";
-        String icone = "";
+        Scanner s = new Scanner(System.in);
+        int choix;
+        
+        this.afficherGrilles(partie);
+        
+        
+        System.out.println("Choississez une action : ");
+        System.out.println("1 - Deplacer un bateau");
+        System.out.println("2 - Tirer");
+        
+        choix = s.nextInt();
+        
+        do{
+            if(choix == 1){
+                this.cPartie.J1Deplacer();
+            }
+            else if(choix == 2){
+                this.cPartie.J1tirrer();
+            }
+            else{
+                System.out.println("Veuillez rentrer une valeur valide");
+            }
+            
+        }while(choix !=1 || choix!=2);
+        
+        this.cPartie.OrdiTirer();
+        
+    }
+    
+    
+    public void afficherGrilles(Partie partie){
+        
+        String grille;
+        String icone;
         
         Grille grilleJoueur = partie.getJ1().getGrille();
         Grille grilleOrdi = partie.getOrdi().getGrille();
@@ -63,7 +102,7 @@ public class VuePartie {
         
         System.out.println("---------- Grille Adversaire ----------");
         
-                grille = "    ";
+        grille = "    ";
         
         for(int k = 0; k < tailleY; k++ ){
             grille += k;
@@ -99,6 +138,5 @@ public class VuePartie {
         System.out.println(grille);
         
     }
-
     
 }

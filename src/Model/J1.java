@@ -9,6 +9,8 @@ public class J1 extends Joueur {
         super(tailleX, tailleY);
     }
     
-   
+   public Joueur getAdversaire(Partie p){
+       return p.getOrdi();
+   }
     
 }

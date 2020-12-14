@@ -7,7 +7,6 @@ import java.util.Random;
 public abstract class Joueur {
     
     protected Grille grillePerso;
-    protected Joueur adversaire;
     protected ArrayList<Bateau> bateaux;
 
     
@@ -27,9 +26,7 @@ public abstract class Joueur {
         return bateaux;
     }
     
-    public Joueur getAdversaire(){
-        return this.adversaire;
-    }
+    public abstract Joueur getAdversaire(Partie p);
 
     public Grille getGrille() {
         return this.grillePerso;
@@ -40,21 +37,21 @@ public abstract class Joueur {
         ArrayList<Case> caseDisponibles = this.grillePerso.toArrayList();
         
         //Creation cuirasse
-        Cuirasse cuirasse = new Cuirasse();
+        Cuirasse cuirasse = new Cuirasse("Cuirasse");
         this.bateaux.add(cuirasse);
         caseDisponibles = this.PositionnerBateau(cuirasse, caseDisponibles);
         
         //Creation croiseurs
-        Croiseur croiseur1 = new Croiseur();
-        Croiseur croiseur2 = new Croiseur();
+        Croiseur croiseur1 = new Croiseur("Croiseur");
+        Croiseur croiseur2 = new Croiseur("Croiseur");
         
         this.bateaux.add(croiseur1);
         this.bateaux.add(croiseur2);
         
         //Creation Destroyer
-        Destroyer destroyer1 = new Destroyer();
-        Destroyer destroyer2 = new Destroyer();
-        Destroyer destroyer3 = new Destroyer();
+        Destroyer destroyer1 = new Destroyer("Destroyer");
+        Destroyer destroyer2 = new Destroyer("Destroyer");
+        Destroyer destroyer3 = new Destroyer("Destroyer");
         
         this.bateaux.add(destroyer1);
         this.bateaux.add(destroyer2);
@@ -68,10 +65,10 @@ public abstract class Joueur {
         caseDisponibles = this.PositionnerBateau(destroyer3, caseDisponibles);
         
         //Creation sous marins
-        SousMarin sousMarin1 = new SousMarin();
-        SousMarin sousMarin2 = new SousMarin();
-        SousMarin sousMarin3 = new SousMarin();
-        SousMarin sousMarin4 = new SousMarin();
+        SousMarin sousMarin1 = new SousMarin("Sous-Marin");
+        SousMarin sousMarin2 = new SousMarin("Sous-Marin");
+        SousMarin sousMarin3 = new SousMarin("Sous-Marin");
+        SousMarin sousMarin4 = new SousMarin("Sous-Marin");
         
         this.bateaux.add(sousMarin1);
         this.bateaux.add(sousMarin2);
@@ -138,6 +135,22 @@ public abstract class Joueur {
         
         bateau.setPosition(position);
         return casesDisponibles;
+    }
+    
+    public void tirer(Partie p, Bateau bateau, Case c){
+        
+        int x;
+        int y;
+        
+        ArrayList<Case> caseTouchees = bateau.tirer(c);
+        
+        for(int i = 0; i < caseTouchees.size(); i++){
+            x = caseTouchees.get(i).getX();
+            y = caseTouchees.get(i).getY();
+            
+            this.getAdversaire(p).getGrille().getCase(x, y).setEtat(false);
+        }
+        
     }
     
 }
