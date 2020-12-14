@@ -34,7 +34,7 @@ public class VuePartie {
         
         
         System.out.println("Choississez une action : ");
-        System.out.println("1 - Deplacer un bateau");
+        System.out.println("1 - Deplacer un bateau (Non Disponible)");
         System.out.println("2 - Tirer");
         
         choix = s.nextInt();

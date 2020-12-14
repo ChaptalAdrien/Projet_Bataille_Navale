@@ -9,7 +9,6 @@ public abstract class Bateau {
     protected boolean coule;
     protected String type;
     protected boolean orientation; // 1 = verticval - 0 = horrizontal
-    
     //Getters
     
     public Bateau(String type){
@@ -33,6 +32,9 @@ public abstract class Bateau {
         return this.coule;
     }
     
+    public boolean getOrientation(){
+        return this.orientation;
+    }
     //Setters
     
     public void setPosition(ArrayList<Case> position){
@@ -94,5 +96,16 @@ public abstract class Bateau {
         
     }
     
+    public boolean touche(){
+        for(int i = 0; i < this.position.size() ;i++){
+            
+            if(this.position.get(i).getEtat() == false){
+                return true;
+            }
+            
+        }
+        
+        return false;
+    }
 
 }

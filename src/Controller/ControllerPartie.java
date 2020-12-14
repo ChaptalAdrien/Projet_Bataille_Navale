@@ -19,16 +19,23 @@ public class ControllerPartie {
     
     public void creerPartie() throws InterruptedException {
         
-        int tailleX;
-        int tailleY;
-        
+        int tailleX = 15;
+        int tailleY = 15;
+        boolean tailleValide = false;
         Scanner sc = new Scanner(System.in);
         
-        System.out.println("Choisir la longueur de la grille (entier / recommandé : 15) :");
-        tailleX = sc.nextInt();
+        while(!tailleValide){
+            System.out.println("Choisir la longueur du coté de la grille carrée (entier / minimum : 10) :");
+            tailleX = sc.nextInt();
+            tailleY = tailleX;
+            
+            if(tailleX < 10){
+                System.out.println("Cette taille n'est pas valide. Entrez une autre valeur");
+            }else{
+                tailleValide = true;
+            }
         
-        System.out.println("Choisir la hauteur de la grille (entier / recommandé : 15) :");
-        tailleY = sc.nextInt();
+        }
         
         Partie partie = new Partie(tailleX, tailleY);
         this.model = partie;
@@ -53,8 +60,74 @@ public class ControllerPartie {
         
     }
     
-    public void J1Deplacer() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void J1Deplacer() throws InterruptedException {
+        ArrayList<Bateau> bateaux = this.model.getJ1().getBateaux();
+        J1 joueur = this.model.getJ1();
+        ArrayList<String> options = new ArrayList<String>();
+        int nbateau = 0;
+        int n = 0;
+        
+        for(int i = 0; i < bateaux.size(); i++){
+            
+            
+            if(!bateaux.get(i).touche()){
+                nbateau++;
+                System.out.println("Deplacement du " + bateaux.get(i).getType());
+                
+                if(joueur.verifDeplacement(bateaux.get(i), true)){
+
+                    if(bateaux.get(i).getOrientation()){
+                        n++;
+                        options.add("sud"); 
+                        
+                    }
+                    if(!bateaux.get(i).getOrientation()){
+                        options.add("gauche");
+                    } 
+                }
+                if(joueur.verifDeplacement(bateaux.get(i), false)){
+
+                    if(bateaux.get(i).getOrientation()){
+                        n++;
+                        options.add("nord");
+                        
+                    }
+                    if(!bateaux.get(i).getOrientation()){
+                        options.add("droite");
+                    } 
+                }    
+            
+                for(int j = 0; j < options.size(); j++){
+                    System.out.println(j + 1 + " - " + options.get(j));
+                }
+                
+                System.out.println("5 - Ne pas deplacer ce bateau");
+                
+                Scanner s = new Scanner(System.in);
+                int choix = s.nextInt();
+                
+                if(choix != 5){
+                    
+                    if(options.get(choix).equalsIgnoreCase("sud") || options.get(choix).equalsIgnoreCase("gauche")){
+                        joueur.deplacerBateau(bateaux.get(i), true);
+                    }else{
+                        joueur.deplacerBateau(bateaux.get(i), false);
+                    }
+                }
+                
+            }
+
+        }
+        
+        if(nbateau == 0){
+            System.out.println("Aucun Bateau ne peut être déplacé !");
+        }else{
+            System.out.println("Fin du déplacement des bateaux ! Vous allez pouvoir tirer !");
+        }
+            System.out.println("Vos bateaux chargent les canons ...");
+            Thread.sleep(1500);
+            
+            this.J1tirrer();
     }
 
     public void J1tirrer() throws InterruptedException {

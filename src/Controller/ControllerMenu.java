@@ -13,6 +13,8 @@ public class ControllerMenu {
     
     
     public void choixMenuConsole(int c) throws InterruptedException{
+       
+        
         if(c == 1){
             
             ControllerPartie cp = new ControllerPartie(false);

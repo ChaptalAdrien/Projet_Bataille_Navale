@@ -42,6 +42,11 @@ public class Grille {
     }
     
     public Case getCase(int X, int Y){
+        
+        if(X > this.tailleX || Y > this.tailleY){
+            return null;
+        }
+        
         return grille[X][Y];
     }
 

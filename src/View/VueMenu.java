@@ -23,8 +23,21 @@ public class VueMenu {
         System.out.println(" 4 - Quitter ");
         
         Scanner s = new Scanner(System.in);
-        int c = s.nextInt();
         
+        boolean choix = false;
+        int c = 0;
+        
+        
+        while(!choix){
+        
+            c = s.nextInt();
+
+            if(c >0 && c < 5){
+                choix = true;
+            }else{
+                System.out.println("Choix non valide");
+            }
+        }
         ControllerMenu cMenu = new ControllerMenu(this); 
         cMenu.choixMenuConsole(c);
     }

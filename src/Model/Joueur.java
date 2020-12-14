@@ -228,5 +228,87 @@ public abstract class Joueur {
         return finPartie;
     }
     
+    public boolean verifDeplacement(Bateau b, boolean sens){
+       
+       boolean verif = false;
+              
+       //DEPLACEMENT VERTICAL VERS LE SUD
+       if(b.getOrientation() && sens){
+           
+           Case c = this.grillePerso.getCase(b.getPosition().get(b.getTaille() - 1).getX(), b.getPosition().get(b.getTaille() - 1).getY() + 1);
+           
+            if(c != null){
+                verif = c.getEtat() && !c.bateau(this);
+            }else{
+                verif = false;
+            }
+        }
+       
+       //DEPLACEMENT VERTICAL VERS LE NORD
+       if(b.getOrientation() && !sens){
+           
+           Case c = this.grillePerso.getCase(b.getPosition().get(b.getTaille() - 1).getX(), b.getPosition().get(b.getTaille() - 1).getY() - 1);
+           
+            if(c != null){
+                verif = c.getEtat() && !c.bateau(this);
+            }else{
+                verif = false;
+            }
+        }
+       
+       //DEPLACEMENT HORIZONTAL VERS L'OUEST
+       if(!b.getOrientation() && !sens){
+           
+           Case c = this.grillePerso.getCase(b.getPosition().get(b.getTaille() - 1).getX() - 1, b.getPosition().get(b.getTaille() - 1).getY());
+           
+            if(c != null){
+                verif = c.getEtat() && !c.bateau(this);
+            }else{
+                verif = false;
+            }
+        }
+       
+       //DEPLACEMENT HORIZONTAL VERS L'EST
+       if(!b.getOrientation() && sens){
+           
+           Case c = this.grillePerso.getCase(b.getPosition().get(b.getTaille() - 1).getX() + 1, b.getPosition().get(b.getTaille() - 1).getY());
+           
+            if(c != null){
+                verif = c.getEtat() && !c.bateau(this);
+            }else{
+                verif = false;
+            }
+        }
+       
+       return verif;
+    }
     
+    public void deplacerBateau(Bateau b, boolean sens){
+        int k = 0;
+        int n = 0;
+        
+        ArrayList<Case> newPosition = new ArrayList<Case>();
+
+        
+        if(b.getOrientation() && sens){
+            k = 1;
+        }
+        
+        if(b.getOrientation() && !sens){
+            k = -1;
+        }
+        
+        if(!b.getOrientation() && sens){
+            n = -1;
+        }
+        if(!b.getOrientation() && !sens){
+            n = 1;
+        }
+        
+        for(int i = 0; i<b.getTaille(); i++){
+            Case c = this.grillePerso.getCase(b.getPosition().get(i).getX() + k, b.getPosition().get(i).getY() + n);
+            newPosition.add(c);
+            b.setPosition(newPosition);
+        }
+    }
 }
