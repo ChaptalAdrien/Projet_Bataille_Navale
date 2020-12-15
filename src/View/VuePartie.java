@@ -37,12 +37,17 @@ public class VuePartie {
         System.out.println("1 - Deplacer un bateau (Non Disponible)");
         System.out.println("2 - Tirer");
         
-        choix = s.nextInt();
+        
         
         do{
+            
+            choix = s.nextInt();
+            
             if(choix == 1){
-                this.cPartie.J1Deplacer();
-                choixValide = true;
+                System.out.println("Fonctionnalité indisponible pour l'instant.");
+                System.out.println("Veuillez selectionner une autre option.");
+                //this.cPartie.J1Deplacer();
+                
             }
             else if(choix == 2){
                 this.cPartie.J1tirrer();

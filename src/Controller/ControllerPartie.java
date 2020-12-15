@@ -17,7 +17,7 @@ public class ControllerPartie {
     
     //TODO : Gerer les execptions pour les valeurs de la taille de la grille 
     
-    public void creerPartie() throws InterruptedException {
+    public void creerPartie(boolean debug) throws InterruptedException {
         
         int tailleX = 15;
         int tailleY = 15;
@@ -40,8 +40,8 @@ public class ControllerPartie {
         Partie partie = new Partie(tailleX, tailleY);
         this.model = partie;
         
-        partie.getJ1().initBateau();
-        partie.getOrdi().initBateau();
+        partie.getJ1().initBateau(debug);
+        partie.getOrdi().initBateau(debug);
                 
         this.execPartie(); 
         
