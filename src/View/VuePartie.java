@@ -44,9 +44,9 @@ public class VuePartie {
             choix = s.nextInt();
             
             if(choix == 1){
-                System.out.println("Fonctionnalité indisponible pour l'instant.");
-                System.out.println("Veuillez selectionner une autre option.");
-                //this.cPartie.J1Deplacer();
+                //System.out.println("Fonctionnalité indisponible pour l'instant.");
+               // System.out.println("Veuillez selectionner une autre option.");
+                this.cPartie.J1Deplacer();
                 
             }
             else if(choix == 2){
