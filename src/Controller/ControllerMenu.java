@@ -18,7 +18,7 @@ public class ControllerMenu {
         if(c == 1){
             
             ControllerPartie cp = new ControllerPartie(false);
-            cp.creerPartie();
+            cp.creerPartie(false);
         }
         else if (c == 2){
             throw new UnsupportedOperationException("Not supported yet.");
@@ -26,7 +26,7 @@ public class ControllerMenu {
         
         else if(c == 3){
             ControllerPartie cp = new ControllerPartie(true);
-            cp.creerPartie();
+            cp.creerPartie(true);
         }
         
         else if (c == 4){

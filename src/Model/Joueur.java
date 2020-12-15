@@ -32,7 +32,7 @@ public abstract class Joueur {
         return this.grillePerso;
     }
 
-    public void initBateau(){
+    public void initBateau(boolean debug){
         
         ArrayList<Case> caseDisponibles = this.grillePerso.toArrayList();
         
@@ -43,43 +43,49 @@ public abstract class Joueur {
         
         //Creation croiseurs
         Croiseur croiseur1 = new Croiseur("Croiseur");
-        //Croiseur croiseur2 = new Croiseur("Croiseur");
-        
         this.bateaux.add(croiseur1);
-        //this.bateaux.add(croiseur2);
+        caseDisponibles = this.PositionnerBateau(croiseur1, caseDisponibles);
         
+        if(!debug){
+            Croiseur croiseur2 = new Croiseur("Croiseur");
+            this.bateaux.add(croiseur2);
+            caseDisponibles = this.PositionnerBateau(croiseur2, caseDisponibles);
+        }
+
         //Creation Destroyer
         Destroyer destroyer1 = new Destroyer("Destroyer");
-        //Destroyer destroyer2 = new Destroyer("Destroyer");
-        //Destroyer destroyer3 = new Destroyer("Destroyer");
-        
         this.bateaux.add(destroyer1);
-        //this.bateaux.add(destroyer2);
-        //this.bateaux.add(destroyer3);
-        
-        caseDisponibles = this.PositionnerBateau(croiseur1, caseDisponibles);
-        //caseDisponibles = this.PositionnerBateau(croiseur2, caseDisponibles);
-        
         caseDisponibles = this.PositionnerBateau(destroyer1, caseDisponibles);
-        //caseDisponibles = this.PositionnerBateau(destroyer2, caseDisponibles);
-        //caseDisponibles = this.PositionnerBateau(destroyer3, caseDisponibles);
+        
+        if(!debug){
+            Destroyer destroyer2 = new Destroyer("Destroyer");
+            Destroyer destroyer3 = new Destroyer("Destroyer");
+            this.bateaux.add(destroyer2);
+            this.bateaux.add(destroyer3);
+            
+            caseDisponibles = this.PositionnerBateau(destroyer2, caseDisponibles);
+            caseDisponibles = this.PositionnerBateau(destroyer3, caseDisponibles);
+        }
+        
         
         //Creation sous marins
         SousMarin sousMarin1 = new SousMarin("Sous-Marin");
-        //SousMarin sousMarin2 = new SousMarin("Sous-Marin");
-        //SousMarin sousMarin3 = new SousMarin("Sous-Marin");
-        //SousMarin sousMarin4 = new SousMarin("Sous-Marin");
-        
         this.bateaux.add(sousMarin1);
-        //this.bateaux.add(sousMarin2);
-        //this.bateaux.add(sousMarin3);
-        //this.bateaux.add(sousMarin4);
-        
         caseDisponibles = this.PositionnerBateau(sousMarin1, caseDisponibles);
-        //caseDisponibles = this.PositionnerBateau(sousMarin2, caseDisponibles);
-        //caseDisponibles = this.PositionnerBateau(sousMarin3, caseDisponibles);
-        //caseDisponibles = this.PositionnerBateau(sousMarin4, caseDisponibles);
         
+        if(!debug){
+            SousMarin sousMarin2 = new SousMarin("Sous-Marin");
+            SousMarin sousMarin3 = new SousMarin("Sous-Marin");
+            SousMarin sousMarin4 = new SousMarin("Sous-Marin");
+        
+            this.bateaux.add(sousMarin4);
+            this.bateaux.add(sousMarin2);
+            this.bateaux.add(sousMarin3);
+            caseDisponibles = this.PositionnerBateau(sousMarin4, caseDisponibles);
+            caseDisponibles = this.PositionnerBateau(sousMarin2, caseDisponibles);
+            caseDisponibles = this.PositionnerBateau(sousMarin3, caseDisponibles);        
+        }
+
     }
     
     public ArrayList<Case> PositionnerBateau(Bateau bateau, ArrayList<Case> casesDisponibles){
