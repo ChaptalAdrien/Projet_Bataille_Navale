@@ -29,7 +29,11 @@ public class ControllerMenu {
             cp.creerPartie(true);
         }
         
-        else if (c == 4){
+        else if(c == 4){
+            this.vueMenu.aide();
+        }
+        
+        else if (c == 5){
             System.exit(1);
         }
         else{
